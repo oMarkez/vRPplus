@@ -58,7 +58,7 @@ cfg.market_types = {
   },
   ["mobilbutik"] = {
     _config = {blipid=459, blipcolor=3},
-    ["phone"] = 7000
+    ["phone"] = 7000,
     ["phone2"] = 3000
   }
 }
