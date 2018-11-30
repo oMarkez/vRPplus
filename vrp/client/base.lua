@@ -119,14 +119,25 @@ function tvRP.getNearestPlayer(radius)
 end
 
 function tvRP.notify(msg)
-  TriggerEvent("pNotify:SetQueueMax", -1, global, 6)
+  if string.find(msg, "~r~") ~= nil or string.find(msg, "~g~") ~= nil or string.find(msg, "~b~") ~= nil or string.find(msg, "~s~") ~= nil or string.find(msg, "~o~") ~= nil or string.find(msg, "~n~") ~= nil or string.find(msg, "~y~") ~= nil then
+    msg = string.gsub(msg, "~r~", "<b style='color:#FF2D00'>")
+    msg = string.gsub(msg, "~g~", "<b style='color:#2EFF00'>")
+    msg = string.gsub(msg, "~b~", "<b style='color:#0078ff'>")
+    msg = string.gsub(msg, "~s~", "")
+    msg = string.gsub(msg, "~o~", "<b style='color:#FF8F00'>")
+    msg = string.gsub(msg, "~y~", "<b style='color:FFFB00'>")
+    msg = string.gsub(msg, "~n~", "")
+  end
+
+  local linend = "</b>"
+  msg = msg .." ".. linend
+
   TriggerEvent("pNotify:SendNotification", {
-    text = (msg),
-    type = "success",
-    timeout = (3000),
-    layout = "bottomCenter",
-    queue = "global",
-    animation = {open = "gta_effects_fade_in", close = "gta_effects_fade_out"}
+    text = msg,
+    type = "info",
+    timeout = 3000,
+    layout = "bottomRight",
+    theme = "gta"
   })
 end
 
